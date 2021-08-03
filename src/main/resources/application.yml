@@ -1,0 +1,15 @@
+spring:
+  profiles: local
+
+server:
+  port: 8090
+  
+
+
+---
+
+spring:
+  profiles: product
+
+server:
+  port: 8000
