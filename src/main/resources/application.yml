@@ -15,8 +15,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     
 mybatis:
-  mapper-locations:
-  - classpath:com/com.dapamail.mailbatch.lecture.mapper/*.xml
+  mapper-locations: classpath:com/dapamail/mailbatch/lecture/dao/mapper/*.xml
 
 server:
   port: 8091

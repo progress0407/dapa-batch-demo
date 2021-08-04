@@ -10,7 +10,7 @@ import com.dapamail.mailbatch.lecture.entity.Movie;
 @Mapper
 public interface MovieDao {
 	
-	@Select("select * from movie")
+//	@Select("select * from movie")
 	List<Movie> getList();
 	
 }
