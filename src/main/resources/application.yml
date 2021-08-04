@@ -1,13 +1,60 @@
 spring:
+  profiles:
+    active: home-mysql
+  batch:
+    job: # 사용법--job.name={잡 이름}
+      names: ${job.name:NONE}
+
+---
+spring:
+  profiles: home-mysql
+  datasource:
+    url: jdbc:mysql://localhost:3306/newlecture?serverTimezone=UTC&characterEncoding=UTF-8 
+    username: newlecture
+    password: 111
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+server:
+  port: 8091
+      
+---
+spring:
+  profiles: homeoracle
+  datasource:
+      url: jdbc:oracle:thin:@localhost:1521/xepdb1
+      username: philz
+      password: 1234
+      driver-class-name: oracle.jdbc.driver.OracleDriver  
+#    hikari:
+#      jdbc-url: jdbc:oracle:thin:@localhost:1521/xepdb1
+#      username: philz
+#      password: 1234
+#      driver-class-name: oracle.jdbc.driver.OracleDriver
+
+server:
+  port: 8091
+      
+---
+server:
+  port: 8092
+  
+spring:
+  profiles: home-h2
+  datasource:
+    hikari:
+      jdbc-url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+      username: sa
+      password:
+        driver-class-naame: org.h2.Driver
+
+---
+spring:
   profiles: local
 
 server:
   port: 8090
   
-
-
 ---
-
 spring:
   profiles: product
 

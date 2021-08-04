@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 @EnableBatchProcessing
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
+@SpringBootApplication //(exclude = {DataSourceAutoConfiguration.class})
 public class MailBatchApplication {
 
 	public static void main(String[] args) {
