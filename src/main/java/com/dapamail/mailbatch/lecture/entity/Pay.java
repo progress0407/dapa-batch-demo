@@ -3,11 +3,11 @@ package com.dapamail.mailbatch.lecture.entity;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-
-import org.hibernate.annotations.Entity;
-import org.springframework.data.annotation.Id;
+import javax.persistence.Id;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
