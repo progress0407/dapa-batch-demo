@@ -41,8 +41,8 @@ public void executeJob () {
 
 @RequiredArgsConstructor
 @Slf4j
-@EnableScheduling
-@Configuration
+//@EnableScheduling
+//@Configuration
 public class TestScheduledAnnotationConfiguration {
 	
 	@Autowired

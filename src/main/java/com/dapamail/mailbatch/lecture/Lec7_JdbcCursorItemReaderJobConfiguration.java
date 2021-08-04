@@ -13,6 +13,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 
+import com.dapamail.mailbatch.lecture.dao.MovieDao;
+import com.dapamail.mailbatch.lecture.entity.Movie;
 import com.dapamail.mailbatch.lecture.entity.Pay;
 
 import lombok.RequiredArgsConstructor;
@@ -27,10 +29,14 @@ public class Lec7_JdbcCursorItemReaderJobConfiguration {
     private final StepBuilderFactory stepBuilderFactory;
     private final DataSource dataSource; // DataSource DI
 
+    private final MovieDao movieDao;
+    
     private static final int chunkSize = 10;
 
     @Bean
     public Job jdbcCursorItemReaderJob() {
+    	log.info("!!!!!!!!! dataSource {}", dataSource);
+    	log.info("________________ Lec7_JdbcCursorItemReaderJobConfiguration > jdbcCursorItemReaderJob ___________________");
         return jobBuilderFactory.get("jdbcCursorItemReaderJob")
                 .start(jdbcCursorItemReaderStep())
                 .build();
@@ -38,6 +44,7 @@ public class Lec7_JdbcCursorItemReaderJobConfiguration {
 
     @Bean
     public Step jdbcCursorItemReaderStep() {
+    	log.info("________________ Lec7 jdbcCursorItemReaderStep ___________________");
         return stepBuilderFactory.get("jdbcCursorItemReaderStep")
                 .<Pay, Pay>chunk(chunkSize)
                 .reader(jdbcCursorItemReader())
@@ -47,6 +54,7 @@ public class Lec7_JdbcCursorItemReaderJobConfiguration {
 
     @Bean
     public JdbcCursorItemReader<Pay> jdbcCursorItemReader() {
+    	log.info("________________ Lec7 jdbcCursorItemReader ___________________");
         return new JdbcCursorItemReaderBuilder<Pay>()
                 .fetchSize(chunkSize)
                 .dataSource(dataSource)
@@ -57,7 +65,16 @@ public class Lec7_JdbcCursorItemReaderJobConfiguration {
     }
 
     private ItemWriter<Pay> jdbcCursorItemWriter() {
+    	log.info("________________ Lec7 jdbcCursorItemWriter ___________________");
+    	
+    	log.info("movieDao = {}", movieDao.getList());
+    	
+    	for (Movie movie : movieDao.getList()) {
+			System.out.println(movie);
+		}
+    	
         return list -> {
+        	log.info("________________ Lec7 in return statement ___________________");
             for (Pay pay: list) {
                 log.info("Current Pay={}", pay);
             }
