@@ -13,6 +13,10 @@ spring:
     username: newlecture
     password: 111
     driver-class-name: com.mysql.cj.jdbc.Driver
+    
+mybatis:
+  mapper-locations:
+  - classpath:com/com.dapamail.mailbatch.lecture.mapper/*.xml
 
 server:
   port: 8091
