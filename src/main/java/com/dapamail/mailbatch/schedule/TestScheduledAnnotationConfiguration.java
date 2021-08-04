@@ -71,7 +71,7 @@ public class TestScheduledAnnotationConfiguration {
 //		testJobMethode.justPrintLog();
 //		lec2_SimpleJobConfiguration.simpleJob();
 		
-		// jobParameters는 null이 될 수 없다 !
+		// jobParameters는 null이 될 수 없다 !  비어있는 인자라도 넣자 !
 		jobLauncher.run(job, new JobParametersBuilder().toJobParameters());
 	}
 }
