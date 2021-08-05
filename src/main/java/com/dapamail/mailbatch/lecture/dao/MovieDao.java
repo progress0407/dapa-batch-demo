@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Select;
 
 import com.dapamail.mailbatch.lecture.entity.Movie;
 
-@Mapper
+//@Mapper
 public interface MovieDao {
 	
 //	@Select("select * from movie")
